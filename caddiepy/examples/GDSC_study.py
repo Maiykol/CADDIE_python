@@ -1,6 +1,6 @@
 from caddiepy.file_utils.download_file import download_file_ftp, unzip
 from caddiepy.file_utils.load_file import load_csv, load_xlsx
-import caddiepy.api as api
+from caddiepy import api as api
 from caddiepy.task import Task
 from pathlib import Path
 import pandas as pd
