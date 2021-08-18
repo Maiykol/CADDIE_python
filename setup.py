@@ -11,6 +11,7 @@ setup(
     license='LICENSE',
     description='The python package to the Cancer Driver Drug Interaction Explorer (CADDIE)',
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     install_requires=[
         "numpy==1.21.2",
         "pandas==1.3.2",
