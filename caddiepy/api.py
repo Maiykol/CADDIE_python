@@ -51,6 +51,6 @@ def get_task(token, interval=1):
         if response.status_code != 200:
             logger.warning(f'Failed getting result for {token}')
             continue
-        logger.debug('Got results for', token)
+        logger.debug(f'Got results for {token}')
         return response.json()
 

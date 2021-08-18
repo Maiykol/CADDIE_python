@@ -58,9 +58,9 @@ def find_common_drugs(df_gdsc2_reponse):
         response = api.drug_lookup(drug, 'DrugBank').json()
         if response['found']:
             found.append(response['drug'][0]['name'])
-            logger.debug("found", response['drug'][0]['name'])
+            logger.debug(f"found {response['drug'][0]['name']}")
         else:
-            logger.debug("not found", drug)
+            logger.debug(f'not found {drug}')
             not_found.append(drug)
     return found, not_found
 
@@ -88,23 +88,23 @@ def calculate_cell_line_candidates(df_gdsc2_pancan):
     return to_compare, filtered_out
 
 
-def get_drugs_for_cell_line_with_caddie(genes, algorithm):
+def get_drugs_for_cell_line_with_caddie(genes, algorithm, gene_interaction_dataset):
     caddie_gene_ids = [g['graphId'] for g in genes]
     task = Task('drug', algorithm, caddie_gene_ids)
-    # task.set_parameter('resultSize', 99999999)
-    task.set_parameter('geneInteractionDataset', 'IID')
+    task.set_parameter('resultSize', 99999999)
+    task.set_parameter('geneInteractionDataset', gene_interaction_dataset)
     task.set_parameter('drugInteractionDataset', 'DrugBank')
-    task.set_parameter('drug_target_action', 'inhibitor')
+    task.set_parameter('drug_target_action', 'not_activator')
     task.run()
     return task.get_result()
 
-def find_drugs_for_cell_lines(cell_line_dict, algorithm):
+def find_drugs_for_cell_lines(cell_line_dict, algorithm, gene_interaction_dataset):
     drug_dict = {}
     for cell_line, genes in cell_line_dict.items():
         if not len(genes):
             logger.debug(f'Skipping cell line {cell_line} because of no seeds')
             continue
-        response = get_drugs_for_cell_line_with_caddie(genes, algorithm)
+        response = get_drugs_for_cell_line_with_caddie(genes, algorithm, gene_interaction_dataset)
         if response is None:
             logger.debug(f'ERROR for cell line {cell_line}')
             continue
@@ -178,7 +178,7 @@ def plot(spearman_dict, output_folder):
     plt.savefig(f'{output_folder}/spearman_boxplot.png')
 
 
-def run(algorithm, output_folder):
+def run(algorithm, gene_interaction_dataset, output_folder):
     ### 1. Load Data
     logger.info('1. Load Data')
     df_gdsc2_pancan, df_gdsc2_cell_lines, df_gdsc2_reponse = load_data()
@@ -191,7 +191,7 @@ def run(algorithm, output_folder):
     candidate_cell_lines, _ = calculate_cell_line_candidates(df_gdsc2_pancan)
     ### 4. Run task on CADDIE
     logger.info('4. Run task on CADDIE')
-    caddie_drug_dict = find_drugs_for_cell_lines(candidate_cell_lines, algorithm)
+    caddie_drug_dict = find_drugs_for_cell_lines(candidate_cell_lines, algorithm, gene_interaction_dataset)
     ### 5. interpret results
     logger.info('5. Interpret Results')
     overlap_dict, spearman_dict = compare_study_and_caddie(df_gdsc2_reponse, candidate_cell_lines, caddie_drug_dict, found_drugs)

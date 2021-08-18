@@ -17,7 +17,8 @@ setup(
         "pandas==1.3.2",
         "requests==2.26.0",
         "scipy==1.7.1",
-        "seaborn==0.11.2"
+        "seaborn==0.11.2",
+        "openpyxl==3.0.7"
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
