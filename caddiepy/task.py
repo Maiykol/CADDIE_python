@@ -28,14 +28,14 @@ class Task:
         return self.result
 
     def set_parameter(self, parameter, value):
-        if parameter == 'geneInteractionDataset':
-            setattr(self.config.parameters, parameter, settings.GeneInteractionDataset(value))
-        elif parameter == 'drugInteractionDataset':
-            setattr(self.config.parameters, parameter, settings.DrugInteractionDataset(value))
-        elif parameter == 'cancerGeneDataset':
-            setattr(self.config.parameters, parameter, settings.CancerGeneDataset(value))
-        elif parameter == 'drugTargetAction':
-            setattr(self.config.parameters, parameter, settings.DrugEffect(value))
+        if parameter == 'gene_interaction_datasets':
+            setattr(self.config.parameters, parameter, [settings.GeneInteractionDataset(x).value for x in value])
+        elif parameter == 'drug_interaction_datasets':
+            setattr(self.config.parameters, parameter, [settings.DrugInteractionDataset(x).value for x in value])
+        elif parameter == 'cancer_gene_dataset':
+            setattr(self.config.parameters, parameter, settings.CancerGeneDataset(value).value)
+        elif parameter == 'drug_target_action':
+            setattr(self.config.parameters, parameter, settings.DrugEffect(value).value)
         else:
             setattr(self.config.parameters, parameter, value)
 

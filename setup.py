@@ -2,10 +2,10 @@ from setuptools import setup
 
 setup(
     name='caddiepy',
-    version='0.1.1',
+    version='0.2.1',
     author='Maiykol',
     author_email='michael.hartung@uni-hamburg.de',
-    packages=['caddiepy', 'caddiepy.examples', 'caddiepy.file_utils'],
+    packages=['caddiepy', 'caddiepy.examples', 'caddiepy.file_utils', 'caddiepy.utils'],
     scripts=[],
     url='http://pypi.python.org/pypi/caddiepy/',
     license='LICENSE',
