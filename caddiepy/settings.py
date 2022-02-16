@@ -100,7 +100,7 @@ class TaskParameters:
         self.cancer_dataset = CancerGeneDataset('NCG6')
         self.gene_interaction_datasets = [GeneInteractionDataset('IID')]
         self.drug_interaction_datasets = [DrugInteractionDataset('DrugBank')]
-        self.cancer_types = [72]
+        self.cancer_types = []
         self.include_nutraceutical_drugs = True
         self.only_atc_l_drugs = False
         self.filter_paths = True
@@ -114,7 +114,7 @@ class TaskParameters:
         self.result_size = 20
         self.available_drugs = None
         self.drug_target_action = DrugEffect('')
-        self.cancer_typeNames = ['acute lymphoblastic leukemia']
+        self.cancer_type_names = []
         # multi steiner
         self.num_trees = 5
         self.tolerance = 10
@@ -126,6 +126,7 @@ class TaskParameters:
 
 class TaskConfig:
     def __init__(self) -> None:
+        # default parameter
         self.algorithm = Algorithm('trustrank')
         self.target = Target('drug')
         self.parameters = TaskParameters()
