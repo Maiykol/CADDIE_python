@@ -2,7 +2,7 @@
 caddiepy.
 """
 
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 __author__ = 'Michael Hartung'
 __credits__ = """
 Prof. Dr. Jan Baumbach, Chair of Computational Systems Biology (https://www.cosy.bio/), University of Hamburg ; 
