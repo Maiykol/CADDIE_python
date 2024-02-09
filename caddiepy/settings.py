@@ -135,7 +135,7 @@ class TaskConfig:
         return json.dumps(self, default=lambda o: o.__dict__, 
             sort_keys=True, indent=4)
     
-DOMAIN = 'https://exbio.wzw.tum.de/caddie/api/'
+DOMAIN = 'https://apps.cosy.bio/api-caddie/'
 
 HEADERS_JSON = {
                 'Content-type':'application/json', 

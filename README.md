@@ -1,6 +1,6 @@
-<p align="center">
-  <img alt="CADDIE Logo" src="https://github.com/Maiykol/caddiepy/blob/main/caddie_logo.png?raw=true" />
-</p>
+<h1 align="center">
+    <img src="https://raw.githubusercontent.com/biomedbigdata/caddiepy/main/caddie_logo.png" width="200">
+</h1>
 
 
 # caddiepy

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='caddiepy',
-    version='0.2.5',
+    version='0.3.0',
     author='Maiykol',
     author_email='michael.hartung@uni-hamburg.de',
     packages=['caddiepy', 'caddiepy.examples', 'caddiepy.file_utils', 'caddiepy.utils'],
