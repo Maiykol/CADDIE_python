@@ -57,7 +57,7 @@ class Algorithm(str, Enum):
     TRUSTRANK = 'trustrank'
     DEGREE_CENTRALITY = 'degree_centrality'
     BETWEENNESS_CENTRALITY = 'betweenness_centrality'
-    CLOSENESS_CENTRALITY = 'closeness_centrality'
+    HARMONIC_CENTRALITY = 'harmonic_centrality'
     NETWORK_PROXIMITY = 'network_proximity'
     MUTLI_STEINER = 'multi-steiner'
     KEYPATHWAYMINER = 'keypathwayminer'

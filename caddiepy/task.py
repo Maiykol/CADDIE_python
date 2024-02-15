@@ -19,7 +19,9 @@ class Task:
         self.config.target = settings.Target(target)
 
     def _start_task(self):
+        print('config', self.config.to_json())
         self.token = api.start_task(self.config.to_json())
+        print('task started', self.token)
     
     def _get_task(self):
         self.result = api.get_task(self.token)
